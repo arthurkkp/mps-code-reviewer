@@ -2,6 +2,8 @@
 
 A code review plugin for MPS providing basic review interaction, in-line comment viewing, and node-specific comments.
 
+<!-- Verification comment: Testing repository access and tooling setup -->
+
 ## Features
 
 * Configurable connection to Bitbucket pull requests from within MPS
