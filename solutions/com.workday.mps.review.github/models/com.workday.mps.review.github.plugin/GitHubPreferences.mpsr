@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model ref="r:12345678-abcd-ef12-3456-789012345678(com.workday.mps.review.github.plugin)" content="root">
+  <persistence version="9" />
+  <imports>
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
+    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="m3q8" ref="r:abfa740c-751e-47d8-bae6-a0943e92d720(com.workday.mps.review.model)" implicit="true" />
+  </imports>
+  <registry>
+    <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1224071154655" name="jetbrains.mps.baseLanguage.structure.AsExpression" flags="nn" index="0kSF2">
+        <child id="1224071154657" name="classifierType" index="0kSFW" />
+        <child id="1224071154656" name="expression" index="0kSFX" />
+      </concept>
+      <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
+        <child id="1068498886297" name="rValue" index="37vLTx" />
+        <child id="1068498886295" name="lValue" index="37vLTJ" />
+      </concept>
+      <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
+      <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
+        <child id="1197027771414" name="operand" index="2Oq$k0" />
+        <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
+        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
+      </concept>
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
+      </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
+      </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
+      <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
+      <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
+      <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
+        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
+      </concept>
+      <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
+        <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
+        <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
+      </concept>
+      <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
+      <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
+      <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
+      <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
+        <child id="5680397130376446158" name="type" index="1tU5fm" />
+      </concept>
+      <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
+        <child id="1068580123133" name="returnType" index="3clF45" />
+        <child id="1068580123134" name="parameter" index="3clF46" />
+        <child id="1068580123135" name="body" index="3clF47" />
+      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
+      <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
+      <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
+        <child id="1068580123156" name="expression" index="3clFbG" />
+      </concept>
+      <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
+      <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
+        <child id="1068580123160" name="condition" index="3clFbw" />
+        <child id="1068580123161" name="ifTrue" index="3clFbx" />
+      </concept>
+      <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
+        <child id="1068581517665" name="statement" index="3cqZAp" />
+      </concept>
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT" />
+      <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
+      <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
+        <child id="1068581517676" name="expression" index="3cqZAk" />
+      </concept>
+      <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
+        <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
+      </concept>
+      <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
+      <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+        <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
+        <child id="1068499141038" name="actualArgument" index="37wK5m" />
+      </concept>
+      <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
+        <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
+      </concept>
+      <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
+        <reference id="1107535924139" name="classifier" index="3uigEE" />
+      </concept>
+      <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
+        <child id="1081773367579" name="rightExpression" index="3uHU7w" />
+        <child id="1081773367580" name="leftExpression" index="3uHU7B" />
+      </concept>
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+        <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+      <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
+      <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="312cEu" id="GitHubPrefs001">
+    <property role="3GE5qa" value="preferences" />
+    <property role="TrG5h" value="GitHubPreferences" />
+    <node concept="312cEg" id="GitHubPrefs002" role="jymVt">
+      <property role="TrG5h" value="apiBaseUrl" />
+      <node concept="3Tm6S6" id="GitHubPrefs003" role="1B3o_S" />
+      <node concept="17QB3L" id="GitHubPrefs004" role="1tU5fm" />
+    </node>
+    <node concept="312cEg" id="GitHubPrefs005" role="jymVt">
+      <property role="TrG5h" value="accessToken" />
+      <node concept="3Tm6S6" id="GitHubPrefs006" role="1B3o_S" />
+      <node concept="17QB3L" id="GitHubPrefs007" role="1tU5fm" />
+    </node>
+    <node concept="312cEg" id="GitHubPrefs008" role="jymVt">
+      <property role="TrG5h" value="repositoryOwner" />
+      <node concept="3Tm6S6" id="GitHubPrefs009" role="1B3o_S" />
+      <node concept="17QB3L" id="GitHubPrefs010" role="1tU5fm" />
+    </node>
+    <node concept="312cEg" id="GitHubPrefs011" role="jymVt">
+      <property role="TrG5h" value="repositoryName" />
+      <node concept="3Tm6S6" id="GitHubPrefs012" role="1B3o_S" />
+      <node concept="17QB3L" id="GitHubPrefs013" role="1tU5fm" />
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs014" role="jymVt" />
+    <node concept="3clFbW" id="GitHubPrefs015" role="jymVt">
+      <node concept="3cqZAl" id="GitHubPrefs016" role="3clF45" />
+      <node concept="3clFbS" id="GitHubPrefs017" role="3clF47">
+        <node concept="3clFbF" id="GitHubPrefs018" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs019" role="3clFbG">
+            <node concept="10Nm6u" id="GitHubPrefs020" role="37vLTx" />
+            <node concept="2OqwBi" id="GitHubPrefs021" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs022" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs023" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs002" resolve="apiBaseUrl" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="GitHubPrefs024" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs025" role="3clFbG">
+            <node concept="10Nm6u" id="GitHubPrefs026" role="37vLTx" />
+            <node concept="2OqwBi" id="GitHubPrefs027" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs028" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs029" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs005" resolve="accessToken" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="GitHubPrefs030" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs031" role="3clFbG">
+            <node concept="10Nm6u" id="GitHubPrefs032" role="37vLTx" />
+            <node concept="2OqwBi" id="GitHubPrefs033" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs034" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs035" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs008" resolve="repositoryOwner" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="GitHubPrefs036" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs037" role="3clFbG">
+            <node concept="10Nm6u" id="GitHubPrefs038" role="37vLTx" />
+            <node concept="2OqwBi" id="GitHubPrefs039" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs040" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs041" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs011" resolve="repositoryName" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs042" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs043" role="jymVt" />
+    <node concept="3clFbW" id="GitHubPrefs044" role="jymVt">
+      <node concept="3cqZAl" id="GitHubPrefs045" role="3clF45" />
+      <node concept="3clFbS" id="GitHubPrefs046" role="3clF47">
+        <node concept="3clFbF" id="GitHubPrefs047" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs048" role="3clFbG">
+            <node concept="37vLTw" id="GitHubPrefs049" role="37vLTx">
+              <ref role="3cqZAo" node="GitHubPrefs054" resolve="apiBaseUrl" />
+            </node>
+            <node concept="2OqwBi" id="GitHubPrefs050" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs051" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs052" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs002" resolve="apiBaseUrl" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="GitHubPrefs053" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs054a" role="3clFbG">
+            <node concept="37vLTw" id="GitHubPrefs055" role="37vLTx">
+              <ref role="3cqZAo" node="GitHubPrefs058" resolve="accessToken" />
+            </node>
+            <node concept="2OqwBi" id="GitHubPrefs056" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs057" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs058a" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs005" resolve="accessToken" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="GitHubPrefs059" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs060" role="3clFbG">
+            <node concept="37vLTw" id="GitHubPrefs061" role="37vLTx">
+              <ref role="3cqZAo" node="GitHubPrefs062" resolve="repositoryOwner" />
+            </node>
+            <node concept="2OqwBi" id="GitHubPrefs063" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs064" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs065" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs008" resolve="repositoryOwner" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="GitHubPrefs066" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs067" role="3clFbG">
+            <node concept="37vLTw" id="GitHubPrefs068" role="37vLTx">
+              <ref role="3cqZAo" node="GitHubPrefs069" resolve="repositoryName" />
+            </node>
+            <node concept="2OqwBi" id="GitHubPrefs070" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs071" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs072" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs011" resolve="repositoryName" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs073" role="1B3o_S" />
+      <node concept="37vLTG" id="GitHubPrefs054" role="3clF46">
+        <property role="TrG5h" value="apiBaseUrl" />
+        <node concept="17QB3L" id="GitHubPrefs074" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="GitHubPrefs058" role="3clF46">
+        <property role="TrG5h" value="accessToken" />
+        <node concept="17QB3L" id="GitHubPrefs075" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="GitHubPrefs062" role="3clF46">
+        <property role="TrG5h" value="repositoryOwner" />
+        <node concept="17QB3L" id="GitHubPrefs076" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="GitHubPrefs069" role="3clF46">
+        <property role="TrG5h" value="repositoryName" />
+        <node concept="17QB3L" id="GitHubPrefs077" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs078" role="jymVt" />
+    <node concept="3clFb_" id="GitHubPrefs079" role="jymVt">
+      <property role="TrG5h" value="getApiBaseUrl" />
+      <node concept="3clFbS" id="GitHubPrefs080" role="3clF47">
+        <node concept="3cpWs6" id="GitHubPrefs081" role="3cqZAp">
+          <node concept="2OqwBi" id="GitHubPrefs082" role="3cqZAk">
+            <node concept="Xjq3P" id="GitHubPrefs083" role="2Oq$k0" />
+            <node concept="2OwXpG" id="GitHubPrefs084" role="2OqNvi">
+              <ref role="2Oxat5" node="GitHubPrefs002" resolve="apiBaseUrl" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs085" role="1B3o_S" />
+      <node concept="17QB3L" id="GitHubPrefs086" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs087" role="jymVt" />
+    <node concept="3clFb_" id="GitHubPrefs088" role="jymVt">
+      <property role="TrG5h" value="setApiBaseUrl" />
+      <node concept="3clFbS" id="GitHubPrefs089" role="3clF47">
+        <node concept="3clFbF" id="GitHubPrefs090" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs091" role="3clFbG">
+            <node concept="37vLTw" id="GitHubPrefs092" role="37vLTx">
+              <ref role="3cqZAo" node="GitHubPrefs093" resolve="apiBaseUrl" />
+            </node>
+            <node concept="2OqwBi" id="GitHubPrefs094" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs095" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs096" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs002" resolve="apiBaseUrl" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs097" role="1B3o_S" />
+      <node concept="3cqZAl" id="GitHubPrefs098" role="3clF45" />
+      <node concept="37vLTG" id="GitHubPrefs093" role="3clF46">
+        <property role="TrG5h" value="apiBaseUrl" />
+        <node concept="17QB3L" id="GitHubPrefs099" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs100" role="jymVt" />
+    <node concept="3clFb_" id="GitHubPrefs101" role="jymVt">
+      <property role="TrG5h" value="getAccessToken" />
+      <node concept="3clFbS" id="GitHubPrefs102" role="3clF47">
+        <node concept="3cpWs6" id="GitHubPrefs103" role="3cqZAp">
+          <node concept="2OqwBi" id="GitHubPrefs104" role="3cqZAk">
+            <node concept="Xjq3P" id="GitHubPrefs105" role="2Oq$k0" />
+            <node concept="2OwXpG" id="GitHubPrefs106" role="2OqNvi">
+              <ref role="2Oxat5" node="GitHubPrefs005" resolve="accessToken" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs107" role="1B3o_S" />
+      <node concept="17QB3L" id="GitHubPrefs108" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs109" role="jymVt" />
+    <node concept="3clFb_" id="GitHubPrefs110" role="jymVt">
+      <property role="TrG5h" value="setAccessToken" />
+      <node concept="3clFbS" id="GitHubPrefs111" role="3clF47">
+        <node concept="3clFbF" id="GitHubPrefs112" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs113" role="3clFbG">
+            <node concept="37vLTw" id="GitHubPrefs114" role="37vLTx">
+              <ref role="3cqZAo" node="GitHubPrefs115" resolve="accessToken" />
+            </node>
+            <node concept="2OqwBi" id="GitHubPrefs116" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs117" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs118" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs005" resolve="accessToken" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs119" role="1B3o_S" />
+      <node concept="3cqZAl" id="GitHubPrefs120" role="3clF45" />
+      <node concept="37vLTG" id="GitHubPrefs115" role="3clF46">
+        <property role="TrG5h" value="accessToken" />
+        <node concept="17QB3L" id="GitHubPrefs121" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs122" role="jymVt" />
+    <node concept="3clFb_" id="GitHubPrefs123" role="jymVt">
+      <property role="TrG5h" value="getRepositoryOwner" />
+      <node concept="3clFbS" id="GitHubPrefs124" role="3clF47">
+        <node concept="3cpWs6" id="GitHubPrefs125" role="3cqZAp">
+          <node concept="2OqwBi" id="GitHubPrefs126" role="3cqZAk">
+            <node concept="Xjq3P" id="GitHubPrefs127" role="2Oq$k0" />
+            <node concept="2OwXpG" id="GitHubPrefs128" role="2OqNvi">
+              <ref role="2Oxat5" node="GitHubPrefs008" resolve="repositoryOwner" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs129" role="1B3o_S" />
+      <node concept="17QB3L" id="GitHubPrefs130" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs131" role="jymVt" />
+    <node concept="3clFb_" id="GitHubPrefs132" role="jymVt">
+      <property role="TrG5h" value="setRepositoryOwner" />
+      <node concept="3clFbS" id="GitHubPrefs133" role="3clF47">
+        <node concept="3clFbF" id="GitHubPrefs134" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs135" role="3clFbG">
+            <node concept="37vLTw" id="GitHubPrefs136" role="37vLTx">
+              <ref role="3cqZAo" node="GitHubPrefs137" resolve="repositoryOwner" />
+            </node>
+            <node concept="2OqwBi" id="GitHubPrefs138" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs139" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs140" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs008" resolve="repositoryOwner" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs141" role="1B3o_S" />
+      <node concept="3cqZAl" id="GitHubPrefs142" role="3clF45" />
+      <node concept="37vLTG" id="GitHubPrefs137" role="3clF46">
+        <property role="TrG5h" value="repositoryOwner" />
+        <node concept="17QB3L" id="GitHubPrefs143" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs144" role="jymVt" />
+    <node concept="3clFb_" id="GitHubPrefs145" role="jymVt">
+      <property role="TrG5h" value="getRepositoryName" />
+      <node concept="3clFbS" id="GitHubPrefs146" role="3clF47">
+        <node concept="3cpWs6" id="GitHubPrefs147" role="3cqZAp">
+          <node concept="2OqwBi" id="GitHubPrefs148" role="3cqZAk">
+            <node concept="Xjq3P" id="GitHubPrefs149" role="2Oq$k0" />
+            <node concept="2OwXpG" id="GitHubPrefs150" role="2OqNvi">
+              <ref role="2Oxat5" node="GitHubPrefs011" resolve="repositoryName" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs151" role="1B3o_S" />
+      <node concept="17QB3L" id="GitHubPrefs152" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs153" role="jymVt" />
+    <node concept="3clFb_" id="GitHubPrefs154" role="jymVt">
+      <property role="TrG5h" value="setRepositoryName" />
+      <node concept="3clFbS" id="GitHubPrefs155" role="3clF47">
+        <node concept="3clFbF" id="GitHubPrefs156" role="3cqZAp">
+          <node concept="37vLTI" id="GitHubPrefs157" role="3clFbG">
+            <node concept="37vLTw" id="GitHubPrefs158" role="37vLTx">
+              <ref role="3cqZAo" node="GitHubPrefs159" resolve="repositoryName" />
+            </node>
+            <node concept="2OqwBi" id="GitHubPrefs160" role="37vLTJ">
+              <node concept="Xjq3P" id="GitHubPrefs161" role="2Oq$k0" />
+              <node concept="2OwXpG" id="GitHubPrefs162" role="2OqNvi">
+                <ref role="2Oxat5" node="GitHubPrefs011" resolve="repositoryName" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs163" role="1B3o_S" />
+      <node concept="3cqZAl" id="GitHubPrefs164" role="3clF45" />
+      <node concept="37vLTG" id="GitHubPrefs159" role="3clF46">
+        <property role="TrG5h" value="repositoryName" />
+        <node concept="17QB3L" id="GitHubPrefs165" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="GitHubPrefs166" role="jymVt" />
+    <node concept="3clFb_" id="GitHubPrefs167" role="jymVt">
+      <property role="TrG5h" value="equals" />
+      <node concept="3clFbS" id="GitHubPrefs168" role="3clF47">
+        <node concept="3cpWs8" id="GitHubPrefs169" role="3cqZAp">
+          <node concept="3cpWsn" id="GitHubPrefs170" role="3cpWs9">
+            <property role="TrG5h" value="otherPrefs" />
+            <node concept="3uibUv" id="GitHubPrefs171" role="1tU5fm">
+              <ref role="3uigEE" node="GitHubPrefs001" resolve="GitHubPreferences" />
+            </node>
+            <node concept="0kSF2" id="GitHubPrefs172" role="33vP2m">
+              <node concept="3uibUv" id="GitHubPrefs173" role="0kSFW">
+                <ref role="3uigEE" node="GitHubPrefs001" resolve="GitHubPreferences" />
+              </node>
+              <node concept="37vLTw" id="GitHubPrefs174" role="0kSFX">
+                <ref role="3cqZAo" node="GitHubPrefs175" resolve="other" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="GitHubPrefs176" role="3cqZAp">
+          <node concept="3clFbS" id="GitHubPrefs177" role="3clFbx">
+            <node concept="3cpWs6" id="GitHubPrefs178" role="3cqZAp">
+              <node concept="3clFbT" id="GitHubPrefs179" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3clFbC" id="GitHubPrefs180" role="3clFbw">
+            <node concept="10Nm6u" id="GitHubPrefs181" role="3uHU7w" />
+            <node concept="37vLTw" id="GitHubPrefs182" role="3uHU7B">
+              <ref role="3cqZAo" node="GitHubPrefs170" resolve="otherPrefs" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="GitHubPrefs183" role="3cqZAp" />
+        <node concept="3cpWs6" id="GitHubPrefs184" role="3cqZAp">
+          <node concept="1Wc70l" id="GitHubPrefs185" role="3cqZAk">
+            <node concept="1Wc70l" id="GitHubPrefs186" role="3uHU7B">
+              <node concept="1Wc70l" id="GitHubPrefs187" role="3uHU7B">
+                <node concept="2YIFZM" id="GitHubPrefs188" role="3uHU7B">
+                  <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+                  <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
+                  <node concept="2OqwBi" id="GitHubPrefs189" role="37wK5m">
+                    <node concept="Xjq3P" id="GitHubPrefs190" role="2Oq$k0" />
+                    <node concept="liA8E" id="GitHubPrefs191" role="2OqNvi">
+                      <ref role="37wK5l" node="GitHubPrefs079" resolve="getApiBaseUrl" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="GitHubPrefs192" role="37wK5m">
+                    <node concept="37vLTw" id="GitHubPrefs193" role="2Oq$k0">
+                      <ref role="3cqZAo" node="GitHubPrefs170" resolve="otherPrefs" />
+                    </node>
+                    <node concept="liA8E" id="GitHubPrefs194" role="2OqNvi">
+                      <ref role="37wK5l" node="GitHubPrefs079" resolve="getApiBaseUrl" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2YIFZM" id="GitHubPrefs195" role="3uHU7w">
+                  <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
+                  <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+                  <node concept="2OqwBi" id="GitHubPrefs196" role="37wK5m">
+                    <node concept="Xjq3P" id="GitHubPrefs197" role="2Oq$k0" />
+                    <node concept="liA8E" id="GitHubPrefs198" role="2OqNvi">
+                      <ref role="37wK5l" node="GitHubPrefs101" resolve="getAccessToken" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="GitHubPrefs199" role="37wK5m">
+                    <node concept="37vLTw" id="GitHubPrefs200" role="2Oq$k0">
+                      <ref role="3cqZAo" node="GitHubPrefs170" resolve="otherPrefs" />
+                    </node>
+                    <node concept="liA8E" id="GitHubPrefs201" role="2OqNvi">
+                      <ref role="37wK5l" node="GitHubPrefs101" resolve="getAccessToken" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2YIFZM" id="GitHubPrefs202" role="3uHU7w">
+                <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
+                <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+                <node concept="2OqwBi" id="GitHubPrefs203" role="37wK5m">
+                  <node concept="Xjq3P" id="GitHubPrefs204" role="2Oq$k0" />
+                  <node concept="liA8E" id="GitHubPrefs205" role="2OqNvi">
+                    <ref role="37wK5l" node="GitHubPrefs123" resolve="getRepositoryOwner" />
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="GitHubPrefs206" role="37wK5m">
+                  <node concept="37vLTw" id="GitHubPrefs207" role="2Oq$k0">
+                    <ref role="3cqZAo" node="GitHubPrefs170" resolve="otherPrefs" />
+                  </node>
+                  <node concept="liA8E" id="GitHubPrefs208" role="2OqNvi">
+                    <ref role="37wK5l" node="GitHubPrefs123" resolve="getRepositoryOwner" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2YIFZM" id="GitHubPrefs209" role="3uHU7w">
+              <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
+              <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+              <node concept="2OqwBi" id="GitHubPrefs210" role="37wK5m">
+                <node concept="Xjq3P" id="GitHubPrefs211" role="2Oq$k0" />
+                <node concept="liA8E" id="GitHubPrefs212" role="2OqNvi">
+                  <ref role="37wK5l" node="GitHubPrefs145" resolve="getRepositoryName" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="GitHubPrefs213" role="37wK5m">
+                <node concept="37vLTw" id="GitHubPrefs214" role="2Oq$k0">
+                  <ref role="3cqZAo" node="GitHubPrefs170" resolve="otherPrefs" />
+                </node>
+                <node concept="liA8E" id="GitHubPrefs215" role="2OqNvi">
+                  <ref role="37wK5l" node="GitHubPrefs145" resolve="getRepositoryName" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="GitHubPrefs216" role="1B3o_S" />
+      <node concept="10P_77" id="GitHubPrefs217" role="3clF45" />
+      <node concept="37vLTG" id="GitHubPrefs175" role="3clF46">
+        <property role="TrG5h" value="other" />
+        <node concept="3uibUv" id="GitHubPrefs218" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+        </node>
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="GitHubPrefs219" role="1B3o_S" />
+    <node concept="3uibUv" id="GitHubPrefs220" role="EKbjA">
+      <ref role="3uigEE" to="m3q8:$fM5MiPoj_" resolve="ReviewHostPreferences" />
+    </node>
+  </node>
+</model>

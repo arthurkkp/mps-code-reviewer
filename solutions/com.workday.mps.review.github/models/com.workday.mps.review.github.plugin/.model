@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model ref="r:12345678-abcd-ef12-3456-789012345678(com.workday.mps.review.github.plugin)" content="root">
+  <persistence version="9" />
+</model>
