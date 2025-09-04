@@ -159,8 +159,8 @@ zipGit4mpsPlugin.mustRunAfter buildPlugin
 task zipGit4mpsWithBuildPlugin(group: 'MPS Build',
                type: Zip,
                description: 'Archive both git4mps plugin and git4mps build plugin into a zip file') {
-  from "${rootDir}/dist/build/artifacts/"
-  include "git4mpsPlugin/**"
+  from "${rootDir}/dist/build/artifacts/git4mpsPlugin/"
+  include "**"
   destinationDir = file("${rootDir}/dist/build/artifacts/")
   archiveName = 'git4mps.zip'
 }
